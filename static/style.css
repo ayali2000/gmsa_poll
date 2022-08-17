@@ -1,0 +1,13 @@
+#navimg{
+    border-radius: 25px;
+    margin-right: 2px;
+}
+
+#navbg{
+    background-color:darkslategrey;
+}
+
+#fit{
+    object-fit: cover;
+    border-radius: 100px; 
+}

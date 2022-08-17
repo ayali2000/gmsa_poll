@@ -1,0 +1,25 @@
+{% extends "partial/base.html" %}
+{% block title %} GMSA_poll{% endblock %}
+{% block content %}
+{% include "partial/nav.html" %}
+<div class = "container-fluid mt-5">
+    <div class = 'card col-6 offset-3 shadow'>
+        <div class = 'card-body'>
+            {% for i in post %}
+            <div class = 'card-footer'>
+                <div class = 'row'>
+                    <div class='col col-8'>{{i.position}}
+                    </div>
+                    <div class='col col-2'>
+                        <a style = "text-decoration: none;" href = "{% url 'vote' i.pk %}"<span class="badge bg-primary">Vote</span></a>
+                    </div>
+                    <div class='col col-2'>
+                        <a style = "text-decoration: none;" href = "{% url 'results' i.pk %}"<span class="badge bg-primary">Results</span></a>
+                     </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

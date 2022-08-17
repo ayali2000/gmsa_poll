@@ -1,0 +1,84 @@
+{% extends "partial/base.html" %}
+{% load widget_tweaks %}
+{% block title %}Poll Results{% endblock %}
+{% block content %}
+{% include "partial/nav.html" %}
+{% if request.user.is_authenticated%}
+<div class='container mt-3'>
+  <div class="card shadow col-10 offset-1">
+    <h5 class="card-header">Poll Results</h5>
+    <div class="card-body ">
+        <div class="row">
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                    <center>
+                        <h5 class="card-title">{{result.Name_1}}</h5>
+                        {% if result.image_1.url %}
+                        <img src={{result.image_1.url}} height='150' width='150' id='fit' alt='image_1'>
+                        <hr>
+                        {% endif %}
+                        <p>Votes: {{result.count_1}}</p>
+                    </center>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                    <center>
+                        <h5 class="card-title">{{result.Name_2}}</h5>
+                        {% if result.image_2 %}
+                        <img src={{result.image_2.url}} height='150' width='150' id='fit' alt='image_2'>
+                        {% else %}Opposing votes
+                        {% endif %}
+                        <hr>
+                        <p>Votes: {{result.count_2}}</p>
+                    </center>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card shadow">
+          <div class="card-body">
+              <center>
+                  <h5 class="card-title">Total Votes: {{result.total}}</h5>
+              </center>
+          </div>
+        </div>
+    </div>
+  </div>
+  <br>
+  <div class="col ">
+    <div class="card shadow">
+      <div class="card-body">
+          <center>
+              <h5 class="card-title">Declaration text</h5>
+              <p class="card-text">Some text by the EC to go here...<strong>{{result.winner}}</strong> as the winner of this election</p>
+          </center>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="col ">
+    <div class="card shadow">
+      <div class="card-body">
+          <center>
+              <h5 class="card-title">Congratulation text</h5>
+              <p class="card-text">Some text by the EC go here..<strong>{{result.winner}}</strong> as the winner of this election</p>
+          </center>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class='container offset-4 col-4'><br><br><br><br><br><br><br><br>
+<div class = 'alert alert-danger'>
+    Results are not available for unauthorized users
+</div>
+</div>
+{% endif %}
+
+{% endblock %}

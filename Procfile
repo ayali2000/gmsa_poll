@@ -1,0 +1,1 @@
+web: gunicorn GMSA_poll.wsgi --log-file -
