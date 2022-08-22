@@ -21,5 +21,5 @@ from django.urls import path,include
 
 urlpatterns = [
     path('',include('poll.url')),
-    path('admin/', admin.site.urls),
+    path('fuseina/', admin.site.urls),
 ] + static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
