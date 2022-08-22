@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv('SECRETE_KEY','Optional default value')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.getenv('DEBUG','Optional default value') == 'True')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [ 'gmsavotes.herokuapp.com','*']
 
 
 # Application definition
