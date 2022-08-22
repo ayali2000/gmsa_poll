@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'poll',
-    'widget_tweaks'
+    'widget_tweaks',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -138,7 +139,7 @@ AWS_HEADERS={
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 
@@ -148,7 +149,7 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
  
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
