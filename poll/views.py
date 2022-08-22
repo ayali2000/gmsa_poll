@@ -5,11 +5,13 @@ from . forms import *
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+@login_required
 def index(request):
     post = Poll.objects.all()
     context = {'post':post}
     return render(request,'poll/index.html',context)
 
+@login_required
 def vote(request,pk):
     votes=Poll.objects.get(pk=pk)
     vote=Vote()  
@@ -29,8 +31,15 @@ def vote(request,pk):
         return redirect('index')       
     return render(request,'poll/vote.html',context)  
 
+@login_required
 def results(request,pk):
     result=Poll.objects.get(pk=pk)
     context={'result':result}
     return render(request,'poll/results.html',context)    
+
+@login_required
+def elected(request):
+    elect=Poll.objects.all()
+    context={'elect':elect}
+    return render(request,'poll/winners.html',context)
 

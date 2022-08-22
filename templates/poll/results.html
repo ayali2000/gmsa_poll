@@ -4,8 +4,9 @@
 {% block content %}
 {% include "partial/nav.html" %}
 {% if request.user.is_authenticated%}
+<br><br><br>
 <div class='container mt-3'>
-  <div class="card shadow col-10 offset-1">
+  <div class="card shadow col-lg-10 offset-lg-1">
     <h5 class="card-header">Poll Results</h5>
     <div class="card-body ">
         <div class="row">
@@ -51,33 +52,6 @@
     </div>
   </div>
   <br>
-  <div class="col ">
-    <div class="card shadow">
-      <div class="card-body">
-          <center>
-              <h5 class="card-title">Declaration text</h5>
-              <p class="card-text">Some text by the EC to go here...<strong>{{result.winner}}</strong> as the winner of this election</p>
-          </center>
-      </div>
-    </div>
-  </div>
-  <br>
-  <div class="col ">
-    <div class="card shadow">
-      <div class="card-body">
-          <center>
-              <h5 class="card-title">Congratulation text</h5>
-              <p class="card-text">Some text by the EC go here..<strong>{{result.winner}}</strong> as the winner of this election</p>
-          </center>
-      </div>
-    </div>
-  </div>
-</div>
-{% else %}
-<div class='container offset-4 col-4'><br><br><br><br><br><br><br><br>
-<div class = 'alert alert-danger'>
-    Results are not available for unauthorized users
-</div>
 </div>
 {% endif %}
 

@@ -1,0 +1,10 @@
+{% extends "partial/base.html" %}
+{% block title %} GMSA_poll{% endblock %}
+{% block content %}
+{% include "partial/nav.html" %}
+<br><br><br>
+<div class = 'container mt-5'>
+<p> LOGGED OUT </p>
+<a href="{% url 'login' %}" style = 'text-decoration:none;'> login again</a>
+</div>
+{% endblock %}

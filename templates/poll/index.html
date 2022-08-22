@@ -2,23 +2,51 @@
 {% block title %} GMSA_poll{% endblock %}
 {% block content %}
 {% include "partial/nav.html" %}
+<br><br><br>
 <div class = "container-fluid mt-5">
-    <div class = 'card col-6 offset-3 shadow'>
-        <div class = 'card-body'>
-            {% for i in post %}
-            <div class = 'card-footer'>
-                <div class = 'row'>
-                    <div class='col col-8'>{{i.position}}
+    <div class = 'row'>
+        <div class = 'col col-lg-7'>
+            {% if request.user.is_superuser%}
+            <div class = 'card col-lg-8 offset-lg-2 shadow'>
+                <div class = 'card-body'>
+                    {% for i in post %}
+                    <div class = 'card-footer mb-2'>
+                        <div class = 'row'>
+                            <div class='col col-lg-10 col-9' id = 'postid'>{{i.position}}
+                            </div>
+                            <div class='col col-lg-2 col-2'>
+                                <a style = "text-decoration: none;" href = "{% url 'results' i.pk %}"><span class="badge bg-primary">Results</span></a>
+                            </div>
+                        </div>
                     </div>
-                    <div class='col col-2'>
-                        <a style = "text-decoration: none;" href = "{% url 'vote' i.pk %}"<span class="badge bg-primary">Vote</span></a>
-                    </div>
-                    <div class='col col-2'>
-                        <a style = "text-decoration: none;" href = "{% url 'results' i.pk %}"<span class="badge bg-primary">Results</span></a>
-                     </div>
+                    {% endfor %}
                 </div>
             </div>
-            {% endfor %}
+            <div class='offset-lg-5 offset-4'><br><br><br>
+                <a style = "text-decoration: none;" href = "{% url 'elected' %}"><h4><span class="badge rounded-pill bg-primary">Display winners</span></h4></a>
+            </div>
+            {% else %}
+            <div class = 'card col-lg-6 offset-lg-5 shadow'>
+                <div class = 'card-body'>
+                    {% for i in post %}
+                    <div class = 'card-footer mb-2'>
+                        <div class = 'row'>
+                            <div class='col col-lg-10 col-9' id = 'postid'>{{i.position}}
+                            </div>
+                            <div class='col col-lg-2 col-2'>
+                                <a style = "text-decoration: none;" href = "{% url 'vote' i.pk %}"><span class="badge bg-primary">Vote</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class ='col d-none d-lg-block d-md-block'><br>
+            <div id='logodiv'>
+                <img src = "media/logo.jpg" id='logo'>
+            </div>
         </div>
     </div>
 </div>

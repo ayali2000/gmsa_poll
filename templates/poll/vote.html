@@ -4,9 +4,9 @@
 {% block title %}Vote{% endblock %}
 {% block content %}
 {% include "partial/nav.html" %}
-<h3> </h3>
+<br><br><br>
 <div class='container'>
-  <div class="card col-7 offset-2 shadow">
+  <div class="card col-lg-7 offset-lg-2 shadow">
     <center>
     <h5 class="card-header">{{ votes.position}}</h5>
     </center>
@@ -18,10 +18,10 @@
                 <div class="card">
                     <div class="card-body">
                         <center>
-                            <h5 class="card-title">{{votes.Name_1}}</h5>
+                            <h5 class="card-title vot">{{votes.Name_1}}</h5>
                             <img src={% if votes.image_1.url %}{{votes.image_1.url}}{% endif %} height='200px' width='200px' id='fit' alt='image_1'>
                             <hr>
-                            <p>Vote here: {{result.count_2}}</p>
+                            <p class = 'vot'>Vote here:</p>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                                 <label class="form-check-label" for="inlineRadio1"></label>
@@ -34,13 +34,13 @@
                     <div class="card">
                         <div class="card-body">
                             <center>
-                                <h5 class="card-title">{{votes.Name_2}}</h5>
+                                <h5 class="card-title vot" >{{votes.Name_2}}</h5>
                                 {% if votes.image_2 %}<img src={{votes.image_2.url}} height='200px' width='200px'id='fit' alt=''>
                                 {% else %}
                                 wyetgdhbaifudjn hehfndciudf erbfliuf lkkuyigy8
                                 {% endif %}
                                 <hr>
-                                <p>Vote here: {{result.count_2}}</p>
+                                <p class = 'vot'>Vote here: </p>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                                     <label class="form-check-label" for="inlineRadio2"></label>
