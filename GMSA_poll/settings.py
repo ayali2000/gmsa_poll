@@ -119,16 +119,15 @@ USE_TZ = True
 
 #S3 bucket settings
 
-AWS_ACCESS_KEY_ID = str(os.getenv("AWS_ACCESS_KEY_ID",'Optinal default value'))
+AWS_ACCESS_KEY_ID = str(os.getenv("AWS_ACCESS_KEY_ID",'Optinal default value')) 
 AWS_SECRET_ACCESS_KEY = str(os.getenv('AWS_ACCESS_SECRETE_KEY','Optinal default value'))
 AWS_STORAGE_BUCKET_NAME = str(os.getenv('AWS_STORAGE_BUCKET_NAME','Optinal default value'))
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_DEFAULT_ACL = 'public-read'
 
 AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl':'max-age=86400'
+    'CacheControl': 'max-age=86400',
 }
-
 AWS_LOCATION = 'static'
 AWS_QUERYSTRING_AUTH = False
 
@@ -139,6 +138,7 @@ AWS_HEADERS={
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
@@ -149,7 +149,7 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
  
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
