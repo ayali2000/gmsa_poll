@@ -119,9 +119,9 @@ USE_TZ = True
 
 #S3 bucket settings
 
-AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID",'Optinal default value')
-AWS_SECRETE_ACCESS_KEY = os.getenv('AWS_ACCESS_SECRETE_KEY','Optinal default value')
-AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME','Optinal default value')
+AWS_ACCESS_KEY_ID = str(os.getenv("AWS_ACCESS_KEY_ID",'Optinal default value'))
+AWS_SECRET_ACCESS_KEY = str(os.getenv('AWS_ACCESS_SECRETE_KEY','Optinal default value'))
+AWS_STORAGE_BUCKET_NAME = str(os.getenv('AWS_STORAGE_BUCKET_NAME','Optinal default value'))
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}s3.amazonaws.com'
 AWS_DEFAULT_ACL = 'public-read'
 
